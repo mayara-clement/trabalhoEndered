@@ -1,4 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   --color-bg: #fff;
@@ -13,8 +18,14 @@
 }
 
 body {
-  background-color: #eee;
-  font-family: "Roboto", sans-serif;
+  background-color: #f1f7ff;
+  font-family: "Inter", sans-serif;
+}
+
+#__next,
+body,
+html {
+  height: 100%;
 }
 
 .layout {
@@ -48,12 +59,11 @@ body {
   gap: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border);
 }
 
 .sidebar__logo {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 6rem;
+  height: 6rem;
   object-fit: contain;
   border-radius: 1rem;
 }
@@ -77,9 +87,17 @@ body {
   background-color: var(--color-sidebar-item);
   margin-bottom: 1rem;
   border-radius: 0.8rem;
+  transition: ease-in-out 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar__link--active {
+  color: #fff;
+  background-color: #7fc2e4;
+}
+
+.sidebar__link:hover {
   color: #fff;
   background-color: #7fc2e4;
 }
@@ -155,4 +173,31 @@ label {
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+.table-container {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
 }

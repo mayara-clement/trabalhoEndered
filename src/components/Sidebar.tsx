@@ -4,15 +4,17 @@ import { BsPeople } from "react-icons/bs";
 import { TiContacts } from "react-icons/ti";
 import { FiMail } from "react-icons/fi";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { FiLogOut } from "react-icons/fi";
 import Link from "next/link";
 import { useContext } from "react";
 import { SidebarContext } from "@/context/SidebarContext";
 import { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
 
 const sidebarItems = [
   {
-    name: "Home",
-    href: "/",
+    name: "Dashboard",
+    href: "/dashboard",
     icon: AiOutlineHome
   },
   {
@@ -36,12 +38,17 @@ const Sidebar = () => {
   const router = useRouter();
   const { isCollapsed, toggleSidebarcollapse } = useContext(SidebarContext);
 
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    router.push("/");
+  };
+
   return (
     <div className="sidebar__wrapper">
       <button className="btn" onClick={toggleSidebarcollapse}>
         {isCollapsed ? <MdKeyboardArrowRight /> : <MdKeyboardArrowLeft />}
       </button>
-      <aside className="sidebar" data-collapse={isCollapsed}>
+      <aside className="sidebar flex flex-col" data-collapse={isCollapsed}>
         <div className="sidebar__top">
           <Image
             width={80}
@@ -50,9 +57,8 @@ const Sidebar = () => {
             src="/logo.svg"
             alt="logo"
           />
-          <p className="sidebar__logo-name">Endered</p>
         </div>
-        <ul className="sidebar__list">
+        <ul className="sidebar__list flex-grow">
           {sidebarItems.map(({ name, href, icon: Icon }) => {
             return (
               <li className="sidebar__item" key={name}>
@@ -70,6 +76,14 @@ const Sidebar = () => {
             );
           })}
         </ul>
+        <button
+          className="sidebar__link text-red-600 flex items-center w-fit"
+          onClick={handleLogout}>
+          <span className="sidebar__icon text-red-600">
+            <FiLogOut />
+          </span>
+          <span className="sidebar__name text-red-600">Sair</span>
+        </button>
       </aside>
     </div>
   );

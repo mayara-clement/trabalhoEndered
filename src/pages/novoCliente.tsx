@@ -1,5 +1,5 @@
-import BaseLayout from "@/components/BaseLayout";
-import Forms from "@/components/Forms/forms";
+import BaseLayout from "../components/BaseLayout";
+import Forms from "../components/Forms/Forms";
 
 const novoCliente = () => {
   return (

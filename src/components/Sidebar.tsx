@@ -7,7 +7,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import Link from "next/link";
 import { useContext } from "react";
-import { SidebarContext } from "@/context/SidebarContext";
+import { SidebarContext } from "../context/SidebarContext";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
